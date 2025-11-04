@@ -1,0 +1,637 @@
+/* ============================================
+   ESTILOS PERSONALIZADOS PARA PRODUCTOS LOCALES
+   ============================================ */
+
+/* Variables CSS personalizadas adicionales */
+:root {
+  --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --gradient-green: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+  --gradient-warm: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* ============================================
+   BASE Y RESET
+   ============================================ */
+
+/* Estos estilos se aplican mediante clases Tailwind */
+
+/* ============================================
+   HEADER Y NAVEGACIÓN
+   ============================================ */
+
+/* Los estilos del header están en el componente Header.tsx con clases de Tailwind */
+
+/* ============================================
+   CARDS Y PRODUCTOS
+   ============================================ */
+
+.card-hover-effect {
+  transition: var(--transition-smooth);
+  transform: translateY(0);
+}
+
+.card-hover-effect:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+}
+
+.product-card {
+  position: relative;
+  overflow: hidden;
+  background: white;
+  border-radius: 12px;
+  transition: var(--transition-smooth);
+}
+
+.product-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.product-card:hover::before {
+  left: 100%;
+}
+
+.product-card-image {
+  transition: transform 0.5s ease;
+}
+
+.product-card:hover .product-card-image {
+  transform: scale(1.05);
+}
+
+/* Badge de temporada */
+.badge-season {
+  position: relative;
+  overflow: hidden;
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(34, 197, 94, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.8);
+  }
+}
+
+/* ============================================
+   BOTONES Y INTERACCIONES
+   ============================================ */
+
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition-smooth);
+}
+
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.btn-primary:hover::after {
+  width: 300px;
+  height: 300px;
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+/* Botón premium con efecto dorado */
+.btn-premium {
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-premium::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transform: rotate(45deg);
+  transition: all 0.5s;
+}
+
+.btn-premium:hover::before {
+  animation: shine 0.5s ease-in-out;
+}
+
+@keyframes shine {
+  0% {
+    left: -50%;
+  }
+  100% {
+    left: 150%;
+  }
+}
+
+/* ============================================
+   FORMULARIOS Y INPUTS
+   ============================================ */
+
+.input-focus {
+  transition: var(--transition-smooth);
+}
+
+.input-focus:focus {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(3, 2, 19, 0.15);
+}
+
+/* Búsqueda con icono */
+.search-input-wrapper {
+  position: relative;
+}
+
+.search-input-wrapper::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--gradient-primary);
+  transition: width 0.3s ease;
+}
+
+.search-input-wrapper:focus-within::after {
+  width: 100%;
+}
+
+/* ============================================
+   ESTADÍSTICAS Y GRÁFICOS
+   ============================================ */
+
+.stat-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: var(--transition-smooth);
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--gradient-primary);
+  transform: scaleY(0);
+  transition: transform 0.3s ease;
+}
+
+.stat-card:hover::before {
+  transform: scaleY(1);
+}
+
+.stat-card:hover {
+  transform: translateX(4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.progress-bar {
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* ============================================
+   MAPA REGIONAL
+   ============================================ */
+
+.map-container {
+  position: relative;
+  background: linear-gradient(to bottom, #ecfdf5 0%, #dbeafe 100%);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.map-pin {
+  transition: var(--transition-bounce);
+  cursor: pointer;
+}
+
+.map-pin:hover {
+  transform: scale(1.2);
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+.map-pin.selected {
+  animation: pulse-pin 1s ease-in-out infinite;
+}
+
+@keyframes pulse-pin {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+/* Zonas del mapa */
+.map-zone {
+  transition: var(--transition-smooth);
+  cursor: pointer;
+}
+
+.map-zone:hover {
+  opacity: 0.8;
+  transform: scale(1.02);
+}
+
+/* ============================================
+   FILTROS Y BÚSQUEDA
+   ============================================ */
+
+.filter-panel {
+  background: white;
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-smooth);
+}
+
+.filter-panel:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.filter-badge {
+  transition: var(--transition-smooth);
+  cursor: pointer;
+}
+
+.filter-badge:hover {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-sm);
+}
+
+.filter-badge.active {
+  background: var(--gradient-primary);
+  color: white;
+}
+
+/* ============================================
+   MODAL Y DIALOGS
+   ============================================ */
+
+.modal-overlay {
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal-content {
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.premium-card {
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border: 2px solid #fbbf24;
+  position: relative;
+  overflow: hidden;
+}
+
+.premium-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle,
+    rgba(251, 191, 36, 0.1) 0%,
+    transparent 70%
+  );
+  animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ============================================
+   DASHBOARD DE PRODUCTOR
+   ============================================ */
+
+.dashboard-tab {
+  transition: var(--transition-smooth);
+  position: relative;
+}
+
+.dashboard-tab::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--gradient-primary);
+  transition: width 0.3s ease;
+}
+
+.dashboard-tab.active::after {
+  width: 100%;
+}
+
+.product-grid {
+  display: grid;
+  gap: 1.5rem;
+  animation: fadeInGrid 0.5s ease-out;
+}
+
+@keyframes fadeInGrid {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   IMÁGENES Y FALLBACK
+   ============================================ */
+
+.image-loading {
+  background: linear-gradient(
+    90deg,
+    #f0f0f0 25%,
+    #e0e0e0 50%,
+    #f0f0f0 75%
+  );
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.image-error {
+  background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9ca3af;
+}
+
+/* ============================================
+   UTILIDADES Y ANIMACIONES
+   ============================================ */
+
+.fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.slide-in-left {
+  animation: slideInLeft 0.5s ease-out;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.slide-in-right {
+  animation: slideInRight 0.5s ease-out;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.scale-in {
+  animation: scaleIn 0.3s ease-out;
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Loading spinner */
+.spinner {
+  border: 3px solid rgba(3, 2, 19, 0.1);
+  border-top-color: #030213;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ============================================
+   RESPONSIVE Y MEDIA QUERIES
+   ============================================ */
+
+@media (max-width: 768px) {
+  .product-card {
+    border-radius: 8px;
+  }
+
+  .stat-card {
+    padding: 1rem;
+  }
+
+  .filter-panel {
+    border-radius: 8px;
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .card-hover-effect:hover {
+    transform: none;
+  }
+
+  .stat-card:hover {
+    transform: none;
+  }
+}
+
+/* ============================================
+   EFECTOS DE SCROLL
+   ============================================ */
+
+.smooth-scroll {
+  scroll-behavior: smooth;
+}
+
+/* Scrollbar personalizado */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+}
+
+/* ============================================
+   ESTADOS DE ACCESIBILIDAD
+   ============================================ */
+
+*:focus-visible {
+  outline: 2px solid #667eea;
+  outline-offset: 2px;
+}
+
+/* Reduce motion para usuarios que lo prefieren */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+
+@media print {
+  header,
+  .filter-panel,
+  button {
+    display: none;
+  }
+
+  .product-card {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}
